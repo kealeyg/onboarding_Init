@@ -1,5 +1,5 @@
 variable "globals" {}
 
 output "test" {
-    "TesT" = var.globals
+    value = var.globals
 }
