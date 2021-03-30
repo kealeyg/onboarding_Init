@@ -1,5 +1,7 @@
 variable "globals" {}
 
-output "moduleOuput" {
-    value = var.globals
+output "output" {
+    value = {
+        globals = var.globals
+    }
 }
