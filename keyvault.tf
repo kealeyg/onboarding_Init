@@ -1,11 +1,11 @@
 ﻿
-resource "azurerm_key_vault" "ScDcCSV-SCCM-kv" {
-    name = "ScDcCSV-SCCM-kv"
+resource "azurerm_key_vault" "kv" {
+    name = join("", [var.globals.env,"CSV","-",var.globals.group,"-",var.globals.project,"-","kv"])
     location = "canadaCentral"
-    resource_group_name = azurerm_resource_group.ScDc-SCCM_Mgmt-rg.name
+    resource_group_name = azurerm_resource_group.rg.name
     enabled_for_disk_encryption = true
+    provider = azurerm.sub
     tenant_id = data.azurerm_client_config.current.tenant_id
-    soft_delete_enabled = true
     purge_protection_enabled = false
     sku_name = "standard"
     access_policy {
@@ -52,7 +52,7 @@ resource "azurerm_key_vault" "ScDcCSV-SCCM-kv" {
     }
     access_policy {
         tenant_id = data.azurerm_client_config.current.tenant_id
-        object_id = "ecce8cf2-9871-4c39-9a88-7526818134af"
+        object_id = "160a7c45-5bbd-419d-adf5-55babc142021"
         key_permissions = [
             "Get",
             "List",
@@ -96,6 +96,6 @@ resource "azurerm_key_vault" "ScDcCSV-SCCM-kv" {
         default_action = "Allow"
         bypass         = "AzureServices"
     }
-    tags = var.tags
+    tags = var.globals.tags
 }
 

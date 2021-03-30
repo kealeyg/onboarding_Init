@@ -1,5 +1,5 @@
+/* Config
+------------------------------------------------------------------*/
 variable "globals" {}
-
-output "moduleOutput" {
-    value = "Test"
-}
+provider "azurerm" { alias = "sub" }
+data "azurerm_client_config" "current" {provider = azurerm.sub}
