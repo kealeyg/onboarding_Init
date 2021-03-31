@@ -19,4 +19,3 @@ output "moduleOutput" {
       containerName = azurerm_storage_container.container.name
     }
 }
-test
