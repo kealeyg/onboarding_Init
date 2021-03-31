@@ -2,7 +2,7 @@ variable keyvault {}
 
 resource "azurerm_key_vault_secret" "tfstate" {
     name = "tfstate-access-key"
-    value = var.keyvault.tfstate
+    value = azurerm_storage_account.storage.primary_access_key
     key_vault_id = azurerm_key_vault.kv.id
     provider = azurerm.sub
 }
