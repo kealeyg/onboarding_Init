@@ -2,6 +2,7 @@
 ------------------------------------------------------------------*/
 variable "globals" {}
 provider "azurerm" { alias = "sub" }
+variable keyvault {}
 data "azurerm_client_config" "current" {provider = azurerm.sub}
 
 locals {
