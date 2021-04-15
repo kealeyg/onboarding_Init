@@ -1,7 +1,7 @@
 resource "azurerm_storage_account" "storage" {
   name = local.storageName
   provider = azurerm.sub
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.storage-rg.name
   location = "canadaCentral"
   account_tier = "Standard"
   account_replication_type = "LRS"

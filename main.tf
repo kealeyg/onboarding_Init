@@ -7,7 +7,7 @@ data "azurerm_client_config" "current" {provider = azurerm.sub}
 
 locals {
   prefix = "${var.globals.env}-${var.globals.group}"
-  unique      = substr(sha1(azurerm_resource_group.rg.id), 0, 3)
+  unique      = substr(sha1(azurerm_resource_group.storage-rg.id), 0, 3)
   storageName = lower(join("", [var.globals.env, var.globals.project, local.unique, "stg"]))
 }
 

@@ -2,7 +2,7 @@
 resource "azurerm_key_vault" "kv" {
     name = join("", [var.globals.env,"CSV","-",var.globals.group,"-",var.globals.project,"-","kv"])
     location = "canadaCentral"
-    resource_group_name = azurerm_resource_group.rg.name
+    resource_group_name = azurerm_resource_group.keyvault-rg.name
     enabled_for_disk_encryption = true
     provider = azurerm.sub
     tenant_id = data.azurerm_client_config.current.tenant_id
