@@ -6,6 +6,9 @@ resource "azurerm_storage_account" "storage" {
   account_tier = "Standard"
   account_replication_type = "LRS"
   tags = var.globals.tags
+  provisioner "local-exec" {
+    command = "setx ARM_ACCESS_KEY test"
+  }
 }
 
 resource "azurerm_storage_container" "container" {
