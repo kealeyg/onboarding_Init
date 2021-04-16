@@ -6,9 +6,6 @@ resource "azurerm_storage_account" "storage" {
   account_tier = "Standard"
   account_replication_type = "LRS"
   tags = var.globals.tags
-  provisioner "local-exec" {
-    command = "setx ARM_ACCESS_KEY test"
-  }
 }
 
 resource "azurerm_storage_container" "container" {
@@ -16,4 +13,7 @@ resource "azurerm_storage_container" "container" {
   provider = azurerm.sub
   storage_account_name = azurerm_storage_account.storage.name
   container_access_type = "private"
+  provisioner "local-exec" {
+    command = "setx ARM_ACCESS_KEY ${azurerm_storage_account.storage.primary_access_key}"
+  }
 }
