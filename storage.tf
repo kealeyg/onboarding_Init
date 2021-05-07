@@ -3,8 +3,10 @@ resource "azurerm_storage_account" "storage" {
   provider = azurerm.sub
   resource_group_name = azurerm_resource_group.storage-rg.name
   location = "canadaCentral"
+  account_kind = "BlobStorage"
   account_tier = "Standard"
-  account_replication_type = "LRS"
+  access_tier = "Hot"
+  account_replication_type = "RAGRS"
   tags = var.globals.tags
 }
 
